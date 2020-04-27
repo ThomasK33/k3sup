@@ -90,7 +90,7 @@ Provide the --local-path flag with --merge if a kubeconfig already exists in som
 			k3sExtraArgs += `--no-deploy servicelb --no-deploy traefik`
 		}
 
-		installk3sExec := fmt.Sprintf("INSTALL_K3S_EXEC='server %s --tls-san %s %s'", clusterStr, ip, strings.TrimSpace(k3sExtraArgs))
+		installk3sExec := fmt.Sprintf("INSTALL_K3S_EXEC=\"server %s --tls-san %s %s\"", clusterStr, ip, strings.TrimSpace(k3sExtraArgs))
 
 		installK3scommand := fmt.Sprintf("curl -sLS https://get.k3s.io | %s INSTALL_K3S_VERSION='%s' sh -\n", installk3sExec, k3sVersion)
 		getConfigcommand := fmt.Sprintf(sudoPrefix + "cat /etc/rancher/k3s/k3s.yaml\n")
